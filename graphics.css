@@ -4,12 +4,6 @@ body{text-align: center;background: #f2f6f8;}
 .img{position:absolute;z-index:1;}
 
 
-canvas {
-	position:relative;
-	z-index: 20;
-}
-
-
 	body{
 		margin : 15px;
     	background-image:url(blackjack.jpg);
@@ -30,7 +24,7 @@ canvas {
        1px 1px 0 #000;
 	}
 
-	h2 {
+	/*h2 {
 	    font-family: 'Crete Round', serif;
 	    font-weight: bold;
 	    color: white;
@@ -43,7 +37,7 @@ canvas {
       1px -1px 0 #000,
       -1px 1px 0 #000,
        1px 1px 0 #000;
-	}
+	}*/
 
 	header {
    		height: 100px;
@@ -56,9 +50,6 @@ canvas {
     	color: #02b8dd;
 	}
 
-	canvas{
-		border: 1px solid black;
-	}
 
 
 </style>
