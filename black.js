@@ -1,14 +1,11 @@
 //Number of cards on screen
-var playerCardCount = 0;
-var dealerCardCount = 0;
+var playerCardCount, dealerCardCount, totalDealerScore, totalPlayerScore;
 
-//Total score of cards on screen
-var totalDealerScore = 0;
-var totalPlayerScore = 0;
-
-function getRandom(num){
-  var my_num = Math.floor(Math.random()*num);
-  return my_num;
+function body_onload() {
+    playerCardCount = 0;
+    dealerCardCount = 0;
+    totalDealerScore = 0;
+    totalPlayerScore = 0;
 }
 
 function deal() {
@@ -27,6 +24,54 @@ function deal() {
   player_sorter(index3);
 
   document.getElementById("deal_btn").style.display = "none";
+}
+
+function hit() {
+
+  if(playerCardCount >= 5) {
+    alert("Max number of cards dealt");
+    return;
+  }
+  else {
+    var index = getRandom(52);
+    player_sorter(index);
+    document.getElementById("player_hand").style.display = "block";
+    //alert(totalPlayerScore);
+    if(totalPlayerScore > 21) {
+        confirm("You Lost!");
+        refresh();
+        return;
+     }
+  }
+
+}
+
+function refresh() {
+
+    location.reload();
+}
+
+function stay() {
+  //If dealer is still in 17 bounds
+  if(totalDealerScore <= 17) {
+    dealerHit();
+    return;
+  }
+  //Compare logic
+  if(totalDealerScore > 21) {
+    alert("You Win!");
+    return;
+  }
+  else if(totalDealerScore < totalPlayerScore) {
+    alert("You Win!");
+    return;
+  }
+
+}
+
+function getRandom(num){
+    var my_num = Math.floor(Math.random()*num);
+    return my_num;
 }
 
 function dealer_sorter(num) {
@@ -104,6 +149,8 @@ function player_sorter(num) {
     totalPlayerScore += number;
   }
 
+  //alert(totalPlayerScore);
+  //Over 21 == lose
 
   if(number == 11) {
     number = "J";
@@ -148,47 +195,7 @@ function player_sorter(num) {
 
   playerCardCount++;
 
-
-
-}
-
-function hit() {
-
-  if(playerCardCount >= 5) {
-    alert("Max number of cards dealt");
-    return;
-  }
-  else {
-    var index = getRandom(52);
-    player_sorter(index);
-    
-    //Over 21 == lose
-    if(totalPlayerScore > 21) {
-
-        alert("You got busted");
-        return;
-      }
-  }
-}
-
-function stay() {
-  //If dealer is still in 17 bounds
-  if(totalDealerScore <= 17) {
-    dealerHit();
-    return;
-  }
-
-  //Compare logic
-  if(totalDealerScore > 21) {
-    alert("You Win!");
-    return;
-  }
-  else if(totalDealerScore < totalPlayerScore) {
-    alert("You Win!");
-    return;
-  }
-
-
+  return;
 }
 
 function dealerHit() {
