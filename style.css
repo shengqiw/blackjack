@@ -10,11 +10,12 @@
 }
 
 #player_hand{
-	clear:both;
-	margin-top: 50px;
+	position: absolute;
+	margin-top: 60px;
 	border: 1px solid gray;
 	height: 250px;
 	width: 819px;
+	margin-left: -8%;
 }
 
 #hitme_btn {
@@ -48,14 +49,18 @@
 }
 
 #label_dealer {
-	font-weight: bold;
+	/*font-weight: bold;*/
+	color: white;
+	font-size: 30px;
 }
 
 #label_player {
 	position: absolute;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	left: -50px;
-	top: 71.5%;
+	top: 625px;
+	color: white;
+	font-size: 30px;
 }
 
 h1 {
@@ -65,6 +70,14 @@ h1 {
 h3 {
 	display: inline;
 	padding-right: 40px;
+}
+
+#lblOutput {
+	position: absolute;
+	color: white;
+	top: 50%;
+	left: 32%;
+	font-size: 30px;
 }
 
 #result{
