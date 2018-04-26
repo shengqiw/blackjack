@@ -10,10 +10,24 @@
 <h1>Click to reveal your cards</h1>
 <h3 id="hdrTotal"></h3><h3 id="hdrResult"></h3>
 
-<div id="my_hand">
+<div id="dealer_hand">
 </div>
 
-<div id="controls">
+<input type="button" id="hitme_btn" value="HIT ME"></input>
+
+<input type="button" id="stay_btn" value="STAY"></input>
+
+<input type="button" id="deal_btn" value="DEAL" onclick="deal()"></input>
+
+<div id="player_hand">
+</div>
+
+<!-- <input type="button" id="hitme_btn"> -->
+
+</div>
+
+
+<!-- <div id="controls">
 				<div id="btnDeal">
 					<img src="deck.jpg" height="150" width="100">
 				</div>
@@ -26,16 +40,12 @@
 				</div>
 				<div id="btnRestart">
 				<img src="Cards/green_back.png" height="150" width="100">
-				</div>
+</div> -->
 
 			</div>
 		</div>
- <div id="rules">
- <a href="rules.html">
- Rules to Play
- </a>
- </div>
-<script src="blackjack.js"></script>
+ 
+<script src="black.js"></script>
 </body>
 <style>
     body {

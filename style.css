@@ -1,11 +1,34 @@
 #controls{
 	clear:both;
 }
-#my_hand{
+
+#dealer_hand{
 	clear:both;
 	border: 1px solid gray;
 	height: 250px;
 	width: 835px;
+}
+
+#player_hand{
+	clear:both;
+	margin-top: 50px;
+	border: 1px solid gray;
+	height: 250px;
+	width: 835px;
+}
+
+#hitme_btn {
+	width: 50px;
+}
+
+#stay_btn {
+	width: 50px;
+}
+
+#deal_btn {
+	position: absolute;
+	width: 50px;
+	left: -100px;
 }
 
 h3 {
