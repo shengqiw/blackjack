@@ -6,9 +6,22 @@ function body_onload() {
     dealerCardCount = 0;
     totalDealerScore = 0;
     totalPlayerScore = 0;
+    document.getElementById("hitme_btn").style.display = "none";
+    document.getElementById("stay_btn").style.display = "none";
 }
 
 function deal() {
+  document.getElementById("lblOutput").textContent = '';
+  var playerNode = document.getElementById("player_hand");
+  while (playerNode.firstChild) {
+    playerNode.removeChild(playerNode.firstChild);
+  }
+  var dealerNode = document.getElementById("dealer_hand");
+  while (dealerNode.firstChild) {
+    dealerNode.removeChild(dealerNode.firstChild);
+  }
+
+
   playerCardCount = 0;
   dealerCardCount = 0;
 
@@ -24,6 +37,19 @@ function deal() {
   player_sorter(index3);
 
   document.getElementById("deal_btn").style.display = "none";
+  document.getElementById("hitme_btn").style.display = "initial";
+  document.getElementById("stay_btn").style.display = "initial";
+
+  if (totalPlayerScore > 21) {
+      document.getElementById("lblOutput").textContent = "YOU LOST";
+      body_reset();
+      return;
+   }
+   else if (totalPlayerScore == 21) {
+       document.getElementById("lblOutput").textContent = "BLACKJACK!";
+       body_reset();
+       return;
+   }
 }
 
 function hit() {
@@ -37,12 +63,40 @@ function hit() {
     player_sorter(index);
     document.getElementById("player_hand").style.display = "block";
     //alert(totalPlayerScore);
-    if(totalPlayerScore > 21) {
-        confirm("You Lost!");
-        refresh();
+
+    if (totalPlayerScore > 21) {
+        document.getElementById("lblOutput").textContent = "YOU LOST";
+        body_reset();
         return;
      }
+     else if (totalPlayerScore == 21) {
+         document.getElementById("lblOutput").textContent = "BLACKJACK!";
+         body_reset();
+         return;
+     }
   }
+
+}
+
+function checkResult() {
+
+     if (totalDealerScore <= totalPlayerScore) {
+         document.getElementById("lblOutput").textContent = "YOU WIN"
+         return;
+     }
+     else {
+         document.getElementById("lblOutput").textContent = "YOU LOSE"
+         return;
+     }
+
+}
+
+function body_reset() {
+    document.getElementById("hitme_btn").style.display = "none";
+    document.getElementById("stay_btn").style.display = "none";
+    document.getElementById("deal_btn").style.display = "block";
+
+
 
 }
 
@@ -57,14 +111,13 @@ function stay() {
     dealerHit();
     return;
   }
-  //Compare logic
-  if(totalDealerScore > 21) {
-    alert("You Win!");
+  else if(totalDealerScore > 21) {
+    document.getElementById("lblOutput").textContent = "YOU WIN";
     return;
   }
-  else if(totalDealerScore < totalPlayerScore) {
-    alert("You Win!");
-    return;
+  else {
+      checkResult();
+      body_reset();
   }
 
 }
@@ -130,7 +183,7 @@ function dealer_sorter(num) {
   dealer_hand.appendChild(image);
 
   dealerCardCount++;
-
+  return;
   //alert(img);
 }
 
@@ -199,6 +252,11 @@ function player_sorter(num) {
 }
 
 function dealerHit() {
-  var index = getRandom(52);
-  dealer_sorter(index);
+    while (dealerCardCount < 5 && totalDealerScore <= 17) {
+        var index = getRandom(52);
+        dealer_sorter(index);
+    }
+    checkResult();
+    body_reset();
+
 }
