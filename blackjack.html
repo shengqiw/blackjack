@@ -7,19 +7,24 @@
 </head>
 <body onload="body_onload()">
 <div id="main">
-<h1>BLACKJACK</h1>
+<!-- <h1>BLACKJACK</h1> -->
+
+<!-- BlackJack Logo -->
+<img src="logo.png" alt="Logo" style= "width:50%; height:50%; margin-left: 15%">
+
 <h3 id="hdrTotal"></h3><h3 id="hdrResult"></h3>
 
-<div id="dealer_hand">
+<div id="dealer_hand" style="margin-left: -8%">
 </div>
 
+<label id="lblScore">Total Score: 0</label>
 <input type="button" id="hitme_btn" value="HIT ME" onclick="hit()"></input>
 
 <input type="button" id="stay_btn" value="STAY" onclick="stay()"></input>
 
 <input type="button" id="deal_btn" value="DEAL" onclick="deal()"></input>
 
-<div id="player_hand">
+<div id="player_hand" style="margin-left: -8%">
 </div>
 
 </div>
@@ -31,10 +36,13 @@
 </body>
 <style>
     body {
-        background-image: url("blackjack.jpg");
+        background-image: url("blackjack_moreblurred.png");
 				background-size: cover;
 
     }
+		#lblScore {
+
+		}
 
 </style>
 </html>
