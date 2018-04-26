@@ -46,6 +46,17 @@
 	left: 180px;
 }
 
+#label_dealer {
+	font-weight: bold;
+}
+
+#label_player {
+	position: absolute;
+	font-weight: bold;
+	left: 313px;
+	top: 71.5%;
+}
+
 h1 {
 	text-align: center;
 }
